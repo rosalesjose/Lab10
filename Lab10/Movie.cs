@@ -10,29 +10,33 @@ namespace Lab10
     {
         private string title;
         private string category;
+        private int id;
 
         public string Title
         {
-            set { title = value; } 
+            set { title = value; }
 
-            get { return title; } 
+            get { return title; }
         }
 
         public string Category
         {
-            set { category = value; } 
+            set { category = value; }
 
-            get { return category; } 
-        }               
-
-        public void PrintTitle()
-        {
-            Console.WriteLine(Title);
+            get { return category; }
         }
 
-        public void PrintCategory()
+        public int Id
         {
-            Console.WriteLine(Category);
+            set { id = value; }
+            get { return id; }
+        }
+
+        public Movie(string title, string category, int id)
+        {
+            Title = title;
+            Category = category;
+            Id = id;
         }
     }
 }

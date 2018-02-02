@@ -13,51 +13,85 @@ namespace Lab10
         static void Main(string[] args)
         {
             Console.Title = "Movie List Application";
-            //ArrayList MovieList = Movies();
-
-            Movie m1 = new Movie("Batman", "Superhero", 1);
-            Movie m2 = new Movie("Superman", "Superhero", 1);
-            Movie m3 = new Movie("Wonderwoman", "Superhero", 1);
-            Movie m4 = new Movie("Thor", "Superhero", 1);
-            Movie m5 = new Movie("Ironman", "Superhero", 1);
-            Movie m6 = new Movie("Inside Out", "Superhero", 2);
-            Movie m7 = new Movie("101 Dalmations", "Superhero", 2);
-            Movie m8 = new Movie("Up", "Superhero", 2);
-            Movie m9 = new Movie("Mulan", "Superhero", 2);
-            Movie m10 = new Movie("Toy Story", "Superhero", 2);
-            Movie m11 = new Movie("The Godfather", "Superhero", 3);
-            Movie m12 = new Movie("Goodfellas", "Superhero", 3);
-            Movie m13 = new Movie("City of God", "Superhero", 3);
-            Movie m14 = new Movie("Gold", "Superhero", 3);
-            Movie m15 = new Movie("Wolf of Wall Stree", "Crime", 3);
-
-            //menu of genres
-
-            Console.Write("Enter a genre: ");
-
-            string Choice = Console.ReadLine();
-
-            if (Choice == "Superhero")
+            bool RunProgram = true;
+            while (RunProgram)
             {
-                for (int i = 0; i < MovieList.Count; i++)
+                Console.WriteLine("BLOCKBUSTER GENRE\n\n[1]Superhero     [2]Disney     [3]Crime");
+
+                List<Movie> MovieList = new List<Movie>
+            {
+                new Movie("Batman", "Superhero", 1),
+                new Movie("Superman", "Superhero", 1),
+                new Movie("Wonderwoman", "Superhero", 1),
+                new Movie("Thor", "Superhero", 1),
+                new Movie("Ironman", "Superhero", 1),
+                new Movie("Inside Out", "Disney", 2),
+                new Movie("101 Dalmations", "Disney", 2),
+                new Movie("Up", "Disney", 2),
+                new Movie("Mulan", "Disney", 2),
+                new Movie("Toy Story", "Disney", 2),
+                new Movie("The Godfather", "Crime", 3),
+                new Movie("Goodfellas", "Crime", 3),
+                new Movie("City of God", "Crie", 3),
+                new Movie("Gold", "Crime", 3),
+                new Movie("Wolf of Wall Street", "Crime", 3)
+            };
+
+                int Choice = GetChoice();
+
+                if (Choice == 1)
                 {
-                    Console.WriteLine(MovieList[i]);
+
+                    for (int i = 0; i < MovieList.Count; i++)
+                    {
+                        if (MovieList[i].Id == Choice)
+                        {
+                            Console.WriteLine(MovieList[i].Title);
+                        }
+                    }
                 }
+
+                else if (Choice == 2)
+                {
+                    for (int i = 0; i < MovieList.Count; i++)
+                    {
+                        if (MovieList[i].Id == Choice)
+                        {
+                            Console.WriteLine(MovieList[i].Title);
+                        }
+                    }
+                }
+
+                else if (Choice == 3)
+                {
+                    for (int i = 0; i < MovieList.Count; i++)
+                    {
+                        if (MovieList[i].Id == Choice)
+                        {
+                            Console.WriteLine(MovieList[i].Title);
+                        }
+                    }
+                }
+                
             }
-
-            else if (Choice == "Disney")
-            {
-
-            }
-
-            else if (Choice == "Crime")
-            {
-
-            }
-
         }
 
+        private static int GetChoice()
+        {
+            Console.Write("\nEnter the number of the genre you want: ");
+            try
+            {
+                int Choice = int.Parse(Console.ReadLine());
+                if (Choice == 1 || Choice == 2 || Choice == 3)
+                    return Choice;
+                else
+                    return GetChoice();
+            }
+            catch (Exception)
+            {
+                return GetChoice();
+            }
+        }
         
-
     }
 }

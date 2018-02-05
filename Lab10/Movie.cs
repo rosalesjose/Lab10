@@ -32,7 +32,7 @@ namespace Lab10
             get { return id; }
         }
 
-        public Movie(string title, string category, int id)
+        public  Movie(string title, string category, int id)
         {
             Title = title;
             Category = category;

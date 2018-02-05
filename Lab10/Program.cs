@@ -10,8 +10,10 @@ namespace Lab10
 {
     class Program
     {
+        static bool RunProgram = true;
         static void Main(string[] args)
         {
+
             Console.Title = "Movie List Application";
             bool RunProgram = true;
             while (RunProgram)
@@ -38,41 +40,63 @@ namespace Lab10
             };
 
                 int Choice = GetChoice();
-
-                if (Choice == 1)
-                {
-
-                    for (int i = 0; i < MovieList.Count; i++)
-                    {
-                        if (MovieList[i].Id == Choice)
-                        {
-                            Console.WriteLine(MovieList[i].Title);
-                        }
-                    }
-                }
-
-                else if (Choice == 2)
-                {
-                    for (int i = 0; i < MovieList.Count; i++)
-                    {
-                        if (MovieList[i].Id == Choice)
-                        {
-                            Console.WriteLine(MovieList[i].Title);
-                        }
-                    }
-                }
-
-                else if (Choice == 3)
-                {
-                    for (int i = 0; i < MovieList.Count; i++)
-                    {
-                        if (MovieList[i].Id == Choice)
-                        {
-                            Console.WriteLine(MovieList[i].Title);
-                        }
-                    }
-                }
+                GetCategory(MovieList, Choice);
                 
+                Console.WriteLine("\nEnter the 'Y' key to choose a different movie category. \nOr enter 'N' to quit.");
+                bool MakeDecision = true;
+
+                while (MakeDecision)
+                {
+                    try
+                    {
+                        bool UserDecision = Decision();
+                        RunProgram = UserDecision;
+                        MakeDecision = false;
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Enter the 'Y' key if you want to run the program again.");
+                        Console.WriteLine("Enter 'N' if you want to exit the program.");
+                    }
+                }
+
+            }
+        }
+
+        private static void GetCategory(List<Movie> MovieList, int Choice)
+        {
+            if (Choice == 1)
+            {
+
+                for (int i = 0; i < MovieList.Count; i++)
+                {
+                    if (MovieList[i].Id == Choice)
+                    {
+                        Console.WriteLine(MovieList[i].Title);
+                    }
+                }
+            }
+
+            else if (Choice == 2)
+            {
+                for (int i = 0; i < MovieList.Count; i++)
+                {
+                    if (MovieList[i].Id == Choice)
+                    {
+                        Console.WriteLine(MovieList[i].Title);
+                    }
+                }
+            }
+
+            else if (Choice == 3)
+            {
+                for (int i = 0; i < MovieList.Count; i++)
+                {
+                    if (MovieList[i].Id == Choice)
+                    {
+                        Console.WriteLine(MovieList[i].Title);
+                    }
+                }
             }
         }
 
@@ -92,6 +116,24 @@ namespace Lab10
                 return GetChoice();
             }
         }
-        
+
+        public static bool Decision()
+        {
+           
+            char UserDecision = char.Parse(Console.ReadLine());
+            if (UserDecision == 'y' || UserDecision == 'Y')
+            {
+                Console.Clear();
+                return RunProgram = true;
+            }
+            else if (UserDecision == 'n' || UserDecision == 'N')
+            {
+                return RunProgram = false;
+            }
+            else
+            {
+                return Decision();
+            }
+        }
     }
 }
